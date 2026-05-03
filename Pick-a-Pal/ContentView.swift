@@ -10,9 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State private var names: [String] = ["Elisha", "Andre", "Jasmine", "Po-Chun"]
     @State private var nameToAdd = ""
+    @State private var pickedName = ""
     
     var body: some View {
         VStack {
+            Text(pickedName.isEmpty ? "" : pickedName)
+                .font(.largeTitle)
+                .bold()
+                .padding()
+            
             List {
                 ForEach(names, id: \.description) { name in
                     Text(name).listRowSeparatorTint(.blue)//青い枠線
@@ -33,8 +39,19 @@ struct ContentView: View {
                     }
                     //nameToAdd = ""
                 }
+            
+            Divider()
+            
+            Button("Pick Random Name") {
+                if let randomName = names.randomElement() {
+                    pickedName = randomName
+                } else {
+                    pickedName = ""
+                }
+            }
         }
         .padding()
+               
     }
 }
 
