@@ -15,8 +15,9 @@ struct ContentView: View {
         VStack {
             List {
                 ForEach(names, id: \.description) { name in
-                    Text(name)
+                    Text(name).listRowSeparatorTint(.blue)//青い枠線
                 }
+                Text("").listRowSeparatorTint(.blue)//青い枠線
             }
             
             TextField("Add a name", text: $nameToAdd)
