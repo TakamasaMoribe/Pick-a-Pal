@@ -13,9 +13,11 @@ struct ContentView: View {
     var body: some View {
         VStack {
             List {
-
+                ForEach(names, id: \.description) { name in
+                    Text(name)
+                    
+                }
             }
-            
         }
         .padding()
     }
